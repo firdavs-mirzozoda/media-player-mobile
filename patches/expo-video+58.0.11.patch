@@ -1,0 +1,15 @@
+diff --git a/node_modules/expo-video/android/src/main/java/expo/modules/video/utils/DataSourceUtils.kt b/node_modules/expo-video/android/src/main/java/expo/modules/video/utils/DataSourceUtils.kt
+index 0f1207c..3e0ed9b 100644
+--- a/node_modules/expo-video/android/src/main/java/expo/modules/video/utils/DataSourceUtils.kt
++++ b/node_modules/expo-video/android/src/main/java/expo/modules/video/utils/DataSourceUtils.kt
+@@ -33,7 +33,9 @@ fun buildBaseDataSourceFactory(
+   return if (videoSource.uri?.scheme?.startsWith("http") == true) {
+     buildOkHttpDataSourceFactory(context, videoSource, cacheStorageKey)
+   } else {
+-    DefaultDataSource.Factory(context)
++    // A local manifest (e.g. a generated HLS master) still loads its playlists
++    // and segments over http — send them with the source's headers too.
++    DefaultDataSource.Factory(context, buildOkHttpDataSourceFactory(context, videoSource, cacheStorageKey))
+   }
+ }
+ 

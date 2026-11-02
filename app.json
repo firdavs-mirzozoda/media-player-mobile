@@ -1,0 +1,54 @@
+{
+  "expo": {
+    "name": "Media Player",
+    "slug": "media-player",
+    "version": "1.0.0",
+    "orientation": "default",
+    "icon": "./assets/app-icon.png",
+    "userInterfaceStyle": "automatic",
+    "backgroundColor": "#141312",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.mirzozoda.mediaplayer",
+      "infoPlist": {
+        "UIBackgroundModes": [
+          "audio"
+        ]
+      }
+    },
+    "android": {
+      "package": "com.mirzozoda.mediaplayer",
+      "adaptiveIcon": {
+        "backgroundColor": "#141312",
+        "foregroundImage": "./assets/app-icon.png"
+      },
+      "permissions": [
+        "android.permission.RECORD_AUDIO",
+        "android.permission.INTERNET"
+      ]
+    },
+    "plugins": [
+      [
+        "expo-video",
+        {
+          "supportsBackgroundPlayback": true,
+          "supportsPictureInPicture": true
+        }
+      ],
+      [
+        "expo-audio",
+        {
+          "microphonePermission": "Микрофон нужен, чтобы узнать, какая песня играет рядом"
+        }
+      ],
+      [
+        "expo-media-library",
+        {
+          "photosPermission": "Доступ к галерее нужен, чтобы сохранять скачанные видео",
+          "savePhotosPermission": "Доступ к галерее нужен, чтобы сохранять скачанные видео"
+        }
+      ],
+      "expo-asset"
+    ]
+  }
+}
